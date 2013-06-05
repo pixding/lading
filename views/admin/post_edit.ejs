@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/admin/assets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/admin.css" rel="stylesheet" type="text/css" />
+    <link href="/js/kindeditor/plugins/code/prettify.css" rel="stylesheet" type="text/css" />
+</head>
+<body><% include module/admin_head %>
+    <div class="adminpage grid">
+		<% var adminNav = "wz_2";%>
+        <% include module/admin_nav  %>
+
+        <div class="admincon">
+            <form id="J_form">
+                <div class="opform">
+                    <dl class="fn-clear"> 
+				        <dt>文章标题：</dt> 
+				        <dd><input type="text" value="" name="title" class="txt" placeholder="标题" ></dd> 
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>分类：</dt> 
+				        <dd>
+                            <select name="cateKey" id="J_postCate">
+                                <%for(var i=0;i<catelist.length;i++){ %>
+                                <option value="<%=catelist[i].unique %>"><%=catelist[i].name %></option>
+                                <%} %>
+                            </select>
+                            <input type="hidden" name="cateValue" id="J_postCateValue" value="" />
+                        </dd> 
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>静态化url：</dt> 
+				        <dd><input type="text" value="" name="unique" class="txt"></dd>  
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>描述：</dt> 
+				        <dd><input type="text" value="" name="des" class="txt"></dd>  
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>发布时间：</dt> 
+				        <dd><input type="text" value="" name="createDate" class="txt Wdate"></dd>  
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>标签：</dt> 
+				        <dd><input type="text" value="" name="tags" class="txt"></dd>  
+			        </dl>
+                    <dl class="fn-clear">
+					    <dt>文章内容：</dt>
+					    <dd><textarea class="txt txtarea" name="content"></textarea></dd>
+				    </dl>
+                    <dl class="fn-clear">
+					    <dt></dt>
+					    <dd><input type="button" id="J_submit" class="btn" value="保存" /></dd>
+				    </dl>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="http://r.uzaicdn.com/static/base/jquery/jquery1.8.js" type="text/javascript"></script>
+    <script src="/js/kindeditor/kindeditor-min.js" type="text/javascript"></script>
+    <script src="/js/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+    <script src="/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var editor;
+
+
+            KindEditor.ready(function (K) {
+                editor = K.create('.txtarea', {
+                    allowFileManager: false,
+                    uploadJson: '/admin/upload',
+                    filterMode: true,
+                    formatUploadUrl: false,
+                    afterBlur: function () { this.sync(); }
+                });
+                prettyPrint();
+            });
+
+            $(".Wdate").bind("focus", function () {
+                WdatePicker();
+            });
+
+            $("#J_submit").bind("click", function () {
+                $("#J_postCateValue").val($("#J_postCate option:selected").text());
+                var d = $("#J_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    data: d,
+                    datatype: "json",
+                    url: "/admin/postEdit",
+                    success: function (data) {
+                        if (data.res == 1) {
+                            alert("保存成功!");
+                            location.href = "/admin/postList";
+                        } else {
+                            alert("保存失败！错误代码：" + data.msg);
+                            return false;
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>

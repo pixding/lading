@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/admin/assets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <%- include module/admin_head %>
+    <div class="adminpage grid">
+		<% var adminNav = "lm_1";%>
+        <% include module/admin_nav  %>
+        <div class="admincon">
+            <table class="fn-table">
+				<thead>
+					<tr>
+						<th style="width:25%;">标识符</th>
+						<th style="width:25%;">分类名</th>
+						<th style="width:25%;">创建时间</th>
+                        <th style="width:25%;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0;i<list.length;i++){%>
+					<tr>
+						<td><a href="#"><%=list[i].unique%></a></td>
+						<td><%=list[i].name%></td>
+                        <td><%=list[i].createDate%></td>
+                        <td><a href="/admin/categoryUpdate/<%=list[i]._id%>">编辑</a>&nbsp;<a href="javascript:;" class="del" data-id="<%=list[i]._id%>">删除</a></td>
+					</tr>
+					<%}%>
+				</tbody>
+			</table>
+        </div>
+
+    </div>
+	<script src="/js/jquery.js"></script>
+    <script>
+        $(function () {
+            $(".del").on("click", function () {
+				var that = $(this);
+                var _id = that.data("id");
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/categoryRemove",
+                    data: { id: _id },
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.res == 1){
+							that.parents("tr").remove();
+						}else{
+							alert("删除失败！");
+						}
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<div class="adminleft">
+    <dl>
+		<dt>类目管理</dt>
+        <dd <% if(adminNav=="lm_1"){%>class="current"<%}%>><a href="/admin/categoryList">类目列表</a></dd>
+		<dd <% if(adminNav=="lm_2"){%>class="current"<%}%>><a href="/admin/categoryEdit">类目添加</a></dd>
+	</dl>
+    <dl>
+		<dt>文章管理</dt>
+        <dd <% if(adminNav=="wz_1"){%>class="current"<%}%>><a href="/admin/postList">文章列表</a></dd>
+		<dd <% if(adminNav=="wz_2"){%>class="current"<%}%>><a href="/admin/postEdit">新增文章</a></dd>
+	</dl>
+    <dl>
+		<dt>其它</dt>
+        <dd><a href="#">友情链接</a></dd>
+	</dl>
+</div>

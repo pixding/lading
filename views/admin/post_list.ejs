@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/admin/assets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <%- include module/admin_head %>
+    <div class="adminpage grid">
+		<% var adminNav = "wz_1";%>
+        <% include module/admin_nav  %>
+        <div class="admincon">
+            <table class="fn-table">
+				<thead>
+					<tr>
+						<th style="width:5%;">序号</th>
+						<th style="width:25%;">标题</th>
+						<th style="width:10%;">标识符</th>
+						<th style="width:15%;">分类</th>
+						<th style="width:15%;">标签</th>
+						<th style="width:15%;">发布时间</th>
+                        <th style="width:15%;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0;i<list.length;i++){%>
+					<tr data-id="<%=list[i]._id%>" <% if(list[i].enable==0){%>class="enable"<%}%>>
+						<td><%=(page-1)*settings.static.pagesize+i+1%></td>
+						<td><a href="#"><%=list[i].title%></a></td>
+						<td><%=list[i].unique%></td>
+                        <td><%=list[i].category.value%></td>
+						<td><%=list[i].tags.join(",")%></td>
+						<td><%=list[i].createDate%></td>
+                        <td>
+							<a href="/admin/postUpdate/<%=list[i]._id%>">编辑</a>&nbsp;
+							<a href="javascript:;" class="enable">设置不可用</a>
+							<a href="javascript:;" class="del">删除</a>
+						</td>
+					</tr>
+					<%}%>
+				</tbody>
+			</table>
+
+			<% var base = "/admin/postList?page=";%>
+			<% include module/pagehelper  %>
+
+        </div>
+
+    </div>
+	<script src="/js/jquery.js"></script>
+    <script>
+        $(function () {
+            $(".enable").on("click", function () {
+				var that = $(this);
+                var _id = that.parents("tr").data("id");
+				var enable = that.parents("tr").hasClass("enable")?1:0;
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/postEnable",
+                    data: { id: _id,enable:enable },
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.res == 1){
+							location.reload();
+						}else{
+							alert(data.msg);
+						}
+                    }
+                });
+
+            });
+
+			$(".del").on("click", function () {
+				if(confirm("确定删除")){
+					var that = $(this);
+					var _id = that.parents("tr").data("id");
+					$.ajax({
+						type: "POST",
+						url: "/admin/postRemove",
+						data: { id: _id},
+						dataType: "json",
+						success: function (data) {
+							if(data.res == 1){
+								location.reload();
+							}else{
+								alert(data.msg);
+							}
+						}
+					});
+				};
+
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/admin/assets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <%- include module/admin_head %>
+    <div class="adminpage grid">
+		<% var adminNav = "lm_2";%>
+        <% include module/admin_nav  %>
+
+        <div class="admincon">
+            <form method="post" action="/admin/categoryEdit">
+                <div class="opform">
+                    <dl class="fn-clear"> 
+				        <dt>分类名称：</dt> 
+				        <dd><input type="text" value="" name="name" class="txt" ></dd> 
+			        </dl>
+                    <dl class="fn-clear"> 
+				        <dt>url标识：</dt> 
+				        <dd><input type="text" value="" name="unique" class="txt"></dd>  
+			        </dl>
+                    <dl class="fn-clear">
+					    <dt></dt>
+					    <dd><input type="submit" class="btn" value="保存" /></dd>
+				    </dl>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
