@@ -1,0 +1,66 @@
+.sitetop a{ color:#fff;}
+.sitetop a:hover{ text-decoration:none; color:#fff;}
+.grid{ width:1000px; margin:0 auto;}
+.sitetop{ line-height:50px; background:#222; height:50px; border-bottom:1px solid #666;}
+.sitetop h3{ line-height:50px; width:150px; font-size:24px;  }
+.sitetop .nav{ float:left;}
+.sitetop .nav li{ padding:0 25px; float:left; font-size:14px;}
+.sitetop .nav li:hover{ background:#3f3f3f;}
+
+.sitecon{ padding:20px 0 20px; background:url(http://www.qqmei.cn/uploads/allimg/100529/1_100529063743_2.jpg); }
+.postlist{ width:720px; background:#fff; float:left;}
+.post{ padding:20px;}
+.post .posttitle{ font-size: 24px; text-indent:10px; line-height:36px; }
+.post .posttitle a{color: #111; font-family:Microsoft Yahei;}
+.post .postmeta{color: #999999;font-size: 10px; text-indent:10px;margin: 0 0px 10px;padding: 0; text-transform: uppercase; }
+        
+.read-more{ text-align: right; padding: 5px;}
+.read-more a{color: #D71A21;}
+.singleinfo{margin:0px 10px 10px;font-size:10px;color: #999;	text-transform:uppercase;}
+.categori{color: #999;}
+.categori a {color: #D71A21;}
+
+.pagenav{padding: 20px;}
+.pagenav a{ color:#008FA8;}
+.pagenav a:hover{ text-decoration: underline;}
+
+
+.sidelist{ width:260px; padding-top:20px; background:#fff; float:right;}
+.sidelist .side-dl{ padding:0 20px 20px;}
+.sidelist .side-dl dt{ line-height:40px; margin-bottom:10px; background:#D71A21; font-size:14px; height:40px; overflow:hidden; color:#fff; font-weight:bold; text-indent:10px;}
+.sidelist .side-dl dd{ line-height:30px; border-bottom:1px solid #f0f0f0; height:30px;}
+    .side-dl dd a{ color:#999;}
+    .side-dl dd a:hover{ color:#D71A21; text-decoration:none;}
+ 
+.sitefoot{ height: 40px; line-height: 40px; width: 100%;border-top:1px solid #666;  background:#222; color:#fff; }
+.sitefoot a{ color:#fff;}
+
+/*文章CSS*/
+.entry {margin: 10px 0px;padding: 0px; color:#333; font-size:14px;}
+.entry a{color: #D71A21;}
+.entry a:hover {color: #F43A40;}
+.entry ul, .entry ol {margin: .4em 0 1em;line-height: 150%;}
+.entry ul li, .entry ol li { list-style-type:decimal; list-style-position: outside;margin-left: 1.6em;}
+.entry p {margin: 0px;padding: 5px 0px;line-height: 150%;}
+.entry h2{font-size:24px;font-weight:800;}
+.entry h3{font-size:20px;font-weight:800;}
+.entry h4{font-size:18px;font-weight:800;}
+.entry h5{font-size:16px;font-weight:800;}
+.entry h6{font-weight:800;}
+.entry pre .pln{color:#000}
+.entry pre.str{color:#080}
+.entry pre .kwd{color:#008}
+.entry pre .com{color:#800}
+.entry pre .typ{color:#606}
+.entry pre .lit{color:#066}
+.entry pre .pun,.entry pre .opn,.entry pre .clo{color:#660}
+.entry pre .tag{color:#008}
+.entry pre .atn{color:#606}
+.entry pre .atv{color:#080}
+.entry pre .dec,.entry pre .var{color:#606}
+.entry pre .fun{color:red}
+.entry pre.prettyprint{border-left:4px solid #390; font-size:12px; background:#E7E5DC; margin-left: 10px;display: block;font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace; white-space: pre-wrap;}
+ol.linenums{margin:0 0 1px 45px !important;  }
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {color: #555555; list-style-type: decimal-leading-zero; list-style-position:outside; margin:0 !important; text-indent:5px;}
+li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+li.L0,li.L2,li.L4,li.L6,li.L8{background:#fff}

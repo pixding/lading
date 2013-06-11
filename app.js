@@ -11,6 +11,7 @@ var partials = require('express-partials');
 var app = express();
 var static_dir = __dirname + '/static';
 var admin_static_dir = __dirname + '/views/admin/assets';
+var theme_static_dir = __dirname + '/views/theme/'+config.theme+'/assets';
 
 app.configure(function () {
     app.set('port', config.port);
@@ -27,6 +28,7 @@ app.configure(function () {
 
 app.configure('development', function () {
     app.use("/admin/assets", express.static(admin_static_dir));
+    app.use("/theme/assets", express.static(theme_static_dir));
     app.use(express.static(static_dir));
     app.use(express.errorHandler({
         dumpExceptions: true,
@@ -37,6 +39,7 @@ app.configure('development', function () {
 app.configure('production', function () {
     var one_year = 31557600000;
     app.use("/admin/assets", express.static(admin_static_dir));
+    app.use("/theme/assets", express.static(theme_static_dir));
     app.use(express.static(static_dir, {
         maxAge: one_year
     }));

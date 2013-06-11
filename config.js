@@ -3,7 +3,8 @@ var mongoskin = require('mongoskin');
 //相关配置
 var config = {
     session_secret: 'pixding',
-    port:3111
+    port:3111,
+    theme:"default"
 };
 
 //全局静态变量和方法，供views层使用

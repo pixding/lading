@@ -3,7 +3,10 @@
 * Date: 7/30/12
 * Time: 12:23 AM
 */
+var json = require('./controllers/json');
 var admin = require('./controllers/admin');
+var site = require('./controllers/site');
+
 
 module.exports = function (app) {
     /* admin */
@@ -22,4 +25,10 @@ module.exports = function (app) {
     app.post('/admin/postUpdate/:id', admin.postUpdate);
     app.post('/admin/postEnable', admin.postEnable);
     app.post('/admin/postRemove', admin.postRemove);
+    
+    app.post('/admin/keupload',json.keupload);
+    
+    /*index*/
+    app.get('/',site.index);
+    app.get('/p:page',site.index);
 };

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>lading.me</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/assets/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="sitetop">
+        <div class="grid">
+            <h3 class="fn-left"><a href="#">Lading</a></h3>
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My trend</a></li>
+                <li><a href="#">My work</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">RSS</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sitecon  fn-clear">
+        <div class="grid">
+            <div class="postlist">
+            	<%for(var i=0;i<list.length;i++){%>
+                <article class="post">
+                    <h2 class="posttitle"><a href="#" ><%= list[i].title%></a></h2>
+                    <div class="postmeta">
+                        <span class="author">Posted by Lading  </span> - <span class="clock">  <%= list[i].createDate%></span>
+                    </div>
+                    <div class="entry">
+                        <%- list[i].content%>
+                    </div>
+                    <div class="read-more"><a href="more-link">阅读全文»</a></div>
+                    <div class="singleinfo">
+                        <span class="categori">Categories: <% for(var j=0;j<list[i].tags.length;j++){%><a rel="category tag" title="<%= list[i].tags[j]%>" href="#"><%= list[i].tags[j]%></a> <%}%></span>
+                    </div>
+                </article>
+				<%}%>
+                <div class="pagenav fn-clear">
+                    <div class="fn-left"><a href="#">« 前一页</a></div>
+                    <div class="fn-right"><a href="#">后一页 »</a></div>
+                </div>
+            </div>
+            <div class="sidelist">
+                <dl class="side-dl">
+                    <dt>热门标签</dt>
+                    <dd><a href="#">aciform</a></dd>
+                    <dd><a href="#">Ios Develop</a></dd>
+                    <dd><a href="#">html5</a></dd>
+                </dl>
+                <dl class="side-dl">
+                    <dt>近期文章</dt>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                    <dd><a href="#">浅谈用户体验</a></dd>
+                </dl>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="sitefoot fn-clear">
+	    <div class="grid"> Copyright © 2013 <a href="http://www.lading.me">Lading.me</a> </div>
+	    
+    </div>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/kindeditor/plugins/code/prettify.js"></script>
+	<script>
+	    $(window).load(function(){
+		     $("pre").addClass("prettyprint");
+		     prettyPrint();
+		})
+	</script>
+	
+</body>
+</html>

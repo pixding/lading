@@ -81,17 +81,16 @@ exports.categoryRemove = function (req, res, next) {
 
 //文章列表
 exports.postList = function (req, res, next) {
-    var page = req.query.page;
-    console.log(page);
+    var page = req.query.page || 1;
     page = parseInt(page, 10) > 0 ? parseInt(page, 10) : 1;
     var limit = config.static.pagesize;
 
-
+	
     postMod.count({}, function (err, count) {
         if (err) {
             return next();
         }
-        var totalpage = Math.ceil(count/ limit);
+        var totalpage = Math.ceil(count/ limit) || 1;
         if (page > totalpage) {
             page = totalpage;
         }
@@ -212,6 +211,9 @@ exports.postRemove = function (req, res, next) {
     }
 }
 
+exports.upload = function(req,res,next){
+	
+}
 
 exports.index = function (req, res, next) {
     var page = isNaN(parseInt(req.params.page)) ? 1 : parseInt(req.params.page);
