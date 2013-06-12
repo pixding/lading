@@ -10,25 +10,29 @@ var site = require('./controllers/site');
 
 module.exports = function (app) {
     /* admin */
-    app.get('/admin/', admin.index);
-    app.get('/admin/categoryList', admin.categoryList);
-    app.get('/admin/categoryUpdate/:id', admin.categoryUpdate);
-    app.get('/admin/categoryEdit', admin.categoryEdit);
-    app.post('/admin/categoryEdit', admin.categoryEdit);
-    app.post('/admin/categoryUpdate/:id', admin.categoryUpdate);
-    app.post('/admin/categoryRemove', admin.categoryRemove);
-
-    app.get('/admin/postList', admin.postList);
-    app.get('/admin/postEdit', admin.postEdit);
-    app.get('/admin/postUpdate/:id', admin.postUpdate);
-    app.post('/admin/postEdit', admin.postEdit);
-    app.post('/admin/postUpdate/:id', admin.postUpdate);
-    app.post('/admin/postEnable', admin.postEnable);
-    app.post('/admin/postRemove', admin.postRemove);
+    app.get('/admin/login',admin.login);
+    app.post('/admin/login',admin.login);
     
-    app.post('/admin/keupload',json.keupload);
+    app.get('/admin/', admin.auth_user, admin.index);
+    app.get('/admin/categoryList',admin.auth_user, admin.categoryList);
+    app.get('/admin/categoryUpdate/:id',admin.auth_user, admin.categoryUpdate);
+    app.get('/admin/categoryEdit', admin.auth_user,admin.categoryEdit);
+    app.post('/admin/categoryEdit',admin.auth_user, admin.categoryEdit);
+    app.post('/admin/categoryUpdate/:id',admin.auth_user, admin.categoryUpdate);
+    app.post('/admin/categoryRemove',admin.auth_user, admin.categoryRemove);
+
+    app.get('/admin/postList',admin.auth_user, admin.postList);
+    app.get('/admin/postEdit',admin.auth_user, admin.postEdit);
+    app.get('/admin/postUpdate/:id',admin.auth_user, admin.postUpdate);
+    app.post('/admin/postEdit',admin.auth_user,admin.postEdit);
+    app.post('/admin/postUpdate/:id',admin.auth_user, admin.postUpdate);
+    app.post('/admin/postEnable',admin.auth_user, admin.postEnable);
+    app.post('/admin/postRemove',admin.auth_user, admin.postRemove);
+    
+    app.post('/admin/keupload',admin.auth_user,json.keupload);
     
     /*index*/
     app.get('/',site.index);
     app.get('/p:page',site.index);
+    app.get('/feed',site.feed);
 };

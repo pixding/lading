@@ -1,13 +1,15 @@
 .sitetop a{ color:#fff;}
 .sitetop a:hover{ text-decoration:none; color:#fff;}
 .grid{ width:1000px; margin:0 auto;}
-.sitetop{ line-height:50px; background:#222; height:50px; border-bottom:1px solid #666;}
-.sitetop h3{ line-height:50px; width:150px; font-size:24px;  }
+.sitetop{ line-height:50px; background:#C63A3A; height:50px; border-bottom:1px solid #666;}
+.sitetop h3{ line-height:50px; width:150px; font-size:28px;  }
+.sitetop h3 a{transition: all 0.2s linear 0s; color:#fff;}
+.sitetop h3 a:hover{ color:#333; text-shadow: 2px 2px 2px #666;}
 .sitetop .nav{ float:left;}
 .sitetop .nav li{ padding:0 25px; float:left; font-size:14px;}
-.sitetop .nav li:hover{ background:#3f3f3f;}
+.sitetop .nav li:hover,.sitetop .nav li.current{ background:#b32b2b;}
 
-.sitecon{ padding:20px 0 20px; background:url(http://www.qqmei.cn/uploads/allimg/100529/1_100529063743_2.jpg); }
+.sitecon{ padding:20px 0 20px; background:#dedede; }
 .postlist{ width:720px; background:#fff; float:left;}
 .post{ padding:20px;}
 .post .posttitle{ font-size: 24px; text-indent:10px; line-height:36px; }

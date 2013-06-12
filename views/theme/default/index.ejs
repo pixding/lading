@@ -6,19 +6,8 @@
     <link href="/theme/assets/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="sitetop">
-        <div class="grid">
-            <h3 class="fn-left"><a href="#">Lading</a></h3>
-            <ul class="nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">My trend</a></li>
-                <li><a href="#">My work</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">RSS</a></li>
-            </ul>
-        </div>
-    </div>
-
+	<% var siteNav = "index";%>
+	<%- include module/nav.ejs -%>
     <div class="sitecon  fn-clear">
         <div class="grid">
             <div class="postlist">
@@ -63,11 +52,7 @@
         </div>
         
     </div>
-    
-    <div class="sitefoot fn-clear">
-	    <div class="grid"> Copyright © 2013 <a href="http://www.lading.me">Lading.me</a> </div>
-	    
-    </div>
+	<%- include module/foot.ejs -%>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/kindeditor/plugins/code/prettify.js"></script>
 	<script>
