@@ -18,12 +18,12 @@ config.rss = {
 	max_rss_items: 20,
 	title: "拉丁",
 	description: "拉丁的博文",
-	link:"http://lading.me",
+	link:"http://www.lading.me",
 	language: "zh-cn",
 	managingEditor: "djqq1987@gmail.com",
 	author: {
 		name: "pixding",
-		uri: "http://lading.me"
+		uri: "http://www.lading.me"
 	}
 };
 
