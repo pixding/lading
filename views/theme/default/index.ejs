@@ -27,8 +27,12 @@
                 </article>
 				<%}%>
                 <div class="pagenav fn-clear">
+                	<%if(page<total){%>
                     <div class="fn-left"><a href="/p<%= Number(page)+1%>">« 前一页</a></div>
+                    <%}%>
+                    <%if(page>1){%>
                     <div class="fn-right"><a href="#">后一页 »</a></div>
+                    <%}%>
                 </div>
             </div>
             <div class="sidelist">

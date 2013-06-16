@@ -38,6 +38,8 @@ module.exports = function (app) {
     app.get('/tag/:tag',site.tagList);
     app.get('/p:page',site.index);
     app.get('/feed',site.feed);
+    app.get('/map',site.map);
+    app.get('/sitemap.xml',site.sitemap);
     
     app.get('*',site.go404);
 };

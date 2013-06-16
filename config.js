@@ -1,5 +1,6 @@
 ﻿
 var mongoskin = require('mongoskin');
+var dateFormat = require('dateformat');
 //相关配置
 var config = {
     session_secret: 'session_pixding',
@@ -11,7 +12,12 @@ var config = {
 //全局静态变量和方法，供views层使用
 config.static = {
     name: 'pixding',
-    pagesize:10
+    pagesize:10,
+    method:{
+	   	getDate:function(d){
+	   		return dateFormat(d, "yyyy-mm-dd");
+	   	}
+    }
 }
 
 config.rss = {

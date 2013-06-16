@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lading.me</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/assets/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<% var siteNav = "index";%>
+	<%- include module/nav.ejs -%>
+	<div class="sitecon  fn-clear">
+        <div class="grid">
+            <div class="maincon">
+            	<h1 class="title">网站地图</h1>
+            	<ul class="maplist">
+            	<%for(var i=0; i<postList.length;i++){%>
+            		<li><a href="#"><%=postList[i].title%></a><span class="d"><%=postList[i].createDate%></span></li>
+            	<%}%>
+            	</ul>
+            </div>
+        </div>
+    </div>
+    <%- include module/foot.ejs -%>
+<body>
+</html>

@@ -10,6 +10,12 @@
 .sitetop .nav li:hover,.sitetop .nav li.current{ background:#b32b2b;}
 
 .sitecon{ padding:20px 0 20px; background:#dedede; }
+.maincon{background: #fff; padding: 20px; }
+.maincon .title{ font-size:20px;}
+.maincon .maplist{ padding:10px 40px;}
+.maincon .maplist li{ list-style-type:decimal; font-size:14px; line-height:28px;}
+.maincon .maplist li a{color:#36c;}
+.maincon .maplist .d{padding-left:1em; color:#666;}
 .postlist{ width:720px; background:#fff; float:left;}
 .post{ padding:20px;}
 .post .posttitle{ font-size: 24px; text-indent:10px; line-height:36px; }
@@ -22,7 +28,7 @@
 .categori{color: #999;}
 .categori a {color: #D71A21;}
 
-.pagenav{padding: 20px;}
+.pagenav{padding:0;}
 .pagenav a{ color:#008FA8;}
 .pagenav a:hover{ text-decoration: underline;}
 

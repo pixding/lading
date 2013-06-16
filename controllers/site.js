@@ -18,7 +18,7 @@ exports.index = function(req,res,next){
         }
 	
 	
-		res.render("theme/"+config.theme+"/index", { layout: false, postList: postList, page: page, total: total,tagList:tagList,categoryList:categoryList });
+		res.render("theme/"+config.theme+"/index", { layout: false, postList: postList, page: page, total: totalpage,tagList:tagList,categoryList:categoryList });
 	}
 	
 	proxy.assign("getPostList","getTotal","getTagList","getCategoryList",render);
@@ -161,6 +161,26 @@ exports.feed = function (req, res) {
   });
 };
 
+exports.map = function(req,res,next){
+	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+		if(err){
+			return next();
+		}
+		res.render("theme/"+config.theme+"/map",{layout:false,postList:result});
+	});
+}
+exports.sitemap = function(req,res,next){
+	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+		if(err){
+			return next();
+		}
+		res.set('Content-Type', 'text/xml');
+		res.render("theme/"+config.theme+"/sitemap",{layout:false,postList:result});
+	});
+}
+
+
 exports.go404 = function(req,res){
+	
 	res.render("theme/"+config.theme+"/404",{layout:false});
 }

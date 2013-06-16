@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://www.lading.me/</loc>
+		<lastmod><%=settings.static.method.getDate(new Date())%></lastmod>
+		<changefreq>always</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<%for(var i=0;i<postList.length;i++){%>
+	<url>
+		<loc>http://www.lading.me/post/<%=postList[i].unique %></loc>
+		<lastmod><%=postList[i].createDate %></lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.2</priority>
+	</url>	
+	<%}%>
+</urlset>
