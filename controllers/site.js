@@ -3,28 +3,122 @@ var categoryMod = require('../models/category.js');
 var config = require('../config.js').config;
 var dateFormat = require('dateformat');
 var data2xml = require('data2xml');
+var EventProxy = require('eventproxy').EventProxy;
 exports.index = function(req,res,next){
 	
 	var page = req.params.page || 1;
     page = parseInt(page, 10) > 0 ? parseInt(page, 10) : 1;
     var limit = config.static.pagesize;
-
-    postMod.count({enable:1}, function (err, count) {
+    
+    var proxy = new EventProxy();
+	var render = function(postList,total,tagList,categoryList){
+		var totalpage = Math.ceil(total/ limit) || 1;
+		if (page > totalpage) {
+            page = totalpage;
+        }
+	
+	
+		res.render("theme/"+config.theme+"/index", { layout: false, postList: postList, page: page, total: total,tagList:tagList,categoryList:categoryList });
+	}
+	
+	proxy.assign("getPostList","getTotal","getTagList","getCategoryList",render);
+	
+	//获取文章列表
+	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
         if (err) {
             return next();
         }
-        var totalpage = Math.ceil(count/ limit) || 1;
-        if (page > totalpage) {
-            page = totalpage;
+        var total = result.length;
+        proxy.trigger("getTotal",total);
+        var tags = [];
+        for(var i=0;i<result.length;i++){
+	        tags = tags.concat(result[i].tags);
         }
-        postMod.getByQuery({enable:1}, { skip: (page - 1) * limit, limit: limit, sort: { createDate: -1, _id: -1} }, function (err, result) {
-            if (err) {
-                return next();
-            }
-            res.render("theme/"+config.theme+"/index", { layout: false, list: result, page: page, total: count });
-        });
+        proxy.trigger("getTagList",tags);
+        
+        var postList = result.slice((page - 1) * limit,limit);
+        proxy.trigger("getPostList",postList)
     });
+	
+	//获取分类列表
+	categoryMod.getByQuery({},{},function (err, result) {
+		if(err){
+			return next();
+		}
+		proxy.trigger("getCategoryList",result)
+	});
+}
 
+//文章展示
+exports.post = function(req,res,next){
+	var unique = req.params.unique;
+	postMod.getByUnique(unique,function(err,post){
+		if(err){
+			return next();
+		}
+		if(post){
+			res.render("theme/"+config.theme+"/post",{layout:false,post:post});
+		}else{
+			return next();
+		}
+	})
+}
+
+//分类文章列表
+exports.cateList = function(req,res,next){
+	var cateUnique = req.params.unique;
+	postMod.getByQuery({"category.key":cateUnique},{},function(err,result){
+		if(err){
+			return next();
+		}
+		if(result.length>0){
+			console.log(result.length);
+			var tags = [];
+	        for(var i=0;i<result.length;i++){
+		        tags = tags.concat(result[i].tags);
+	        }
+			categoryMod.getByQuery({},{},function (err, cateList) {
+				if(err){
+					return next();
+				}
+				res.render("theme/"+config.theme+"/index", { layout: false, postList: result, page: 1, total: 1,tagList:tags,categoryList:cateList });
+			});
+		}else{
+			return next();
+		}
+	})
+}
+
+//标签文章列表
+exports.tagList = function(req,res,next){
+	var tag = req.params.tag;
+	console.log(tag);
+	postMod.getByQuery({tags:{$in:[tag]}},{},function(err,result){
+		if(err){
+			
+			console.log(err);
+			return next();
+		}
+		if(result.length>0){
+			console.log(result.length);
+			var tags = [];
+	        for(var i=0;i<result.length;i++){
+		        tags = tags.concat(result[i].tags);
+	        }
+			categoryMod.getByQuery({},{},function (err, cateList) {
+				if(err){
+					
+					console.log(3);
+					return next();
+				}
+				res.render("theme/"+config.theme+"/index", { layout: false, postList: result, page: 1, total: 1,tagList:tags,categoryList:cateList });
+			});
+		}else{
+			
+			console.log();
+			return next();
+		}
+	})
 }
 
 
@@ -66,3 +160,7 @@ exports.feed = function (req, res) {
 		res.send(rss_content);
   });
 };
+
+exports.go404 = function(req,res){
+	res.render("theme/"+config.theme+"/404",{layout:false});
+}

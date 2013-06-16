@@ -12,6 +12,13 @@ exports.getById = function (id, callback) {
         callback(err, result);
     });
 }
+
+exports.getByUnique = function (unique, callback) {
+    db.post.findOne({ unique: unique }, function (err, result) {
+        callback(err, result);
+    });
+}
+
 exports.removeById = function (id, callback) {
     db.post.remove({ _id: db.ObjectID.createFromHexString(id) }, function (err, result) {
         callback(err, result);

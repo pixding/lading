@@ -33,6 +33,11 @@ module.exports = function (app) {
     
     /*index*/
     app.get('/',site.index);
+    app.get('/post/:unique',site.post);
+    app.get('/category/:unique',site.cateList);
+    app.get('/tag/:tag',site.tagList);
     app.get('/p:page',site.index);
     app.get('/feed',site.feed);
+    
+    app.get('*',site.go404);
 };
