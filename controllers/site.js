@@ -24,7 +24,7 @@ exports.index = function(req,res,next){
 	proxy.assign("getPostList","getTotal","getTagList","getCategoryList",render);
 	
 	//获取文章列表
-	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
         if (err) {
             return next();
         }
@@ -67,7 +67,7 @@ exports.post = function(req,res,next){
 //分类文章列表
 exports.cateList = function(req,res,next){
 	var cateUnique = req.params.unique;
-	postMod.getByQuery({"category.key":cateUnique},{},function(err,result){
+	postMod.getByQuery({"category.key":cateUnique,enable:"1"},{},function(err,result){
 		if(err){
 			return next();
 		}
@@ -93,7 +93,7 @@ exports.cateList = function(req,res,next){
 exports.tagList = function(req,res,next){
 	var tag = req.params.tag;
 	console.log(tag);
-	postMod.getByQuery({tags:{$in:[tag]}},{},function(err,result){
+	postMod.getByQuery({tags:{$in:[tag]},enable:"1"},{},function(err,result){
 		if(err){
 			
 			console.log(err);
@@ -128,7 +128,7 @@ exports.feed = function (req, res) {
     	res.statusCode = 404;
 		res.send('Please set `rss` in config.js');
 	}
-	postMod.getByQuery({enable:1}, {limit:20}, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {limit:20}, function (err, result) {
     	if (err) {
 			return next(err);
 		}
@@ -162,7 +162,7 @@ exports.feed = function (req, res) {
 };
 
 exports.map = function(req,res,next){
-	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
 		if(err){
 			return next();
 		}
@@ -170,7 +170,7 @@ exports.map = function(req,res,next){
 	});
 }
 exports.sitemap = function(req,res,next){
-	postMod.getByQuery({enable:1}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
 		if(err){
 			return next();
 		}

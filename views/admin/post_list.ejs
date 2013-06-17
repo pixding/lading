@@ -25,7 +25,7 @@
 				</thead>
 				<tbody>
 					<% for(var i=0;i<list.length;i++){%>
-					<tr data-id="<%=list[i]._id%>" <% if(list[i].enable==0){%>class="enable"<%}%>>
+					<tr data-id="<%=list[i]._id%>" <% if(list[i].enable=="0"){%>class="enable"<%}%>>
 						<td><%=(page-1)*settings.static.pagesize+i+1%></td>
 						<td><a href="#"><%=list[i].title%></a></td>
 						<td><%=list[i].unique%></td>
@@ -68,6 +68,7 @@
 						}
                     }
                 });
+                return false;
 
             });
 

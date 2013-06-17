@@ -134,7 +134,7 @@ exports.postEdit = function (req, res, next) {
             category: { key: req.body.cateKey, value: req.body.cateValue },
             content: req.body.content,
             visit: 0,
-            enable:1,
+            enable:"1",
             createDate: createDate
         };
         postMod.save(post, function (err, result) {
