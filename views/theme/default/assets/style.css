@@ -17,10 +17,11 @@
 .maincon .maplist li a{color:#36c;}
 .maincon .maplist .d{padding-left:1em; color:#666;}
 .postlist{ width:720px; background:#fff; float:left;}
-.post{ padding:20px;}
+.post{ padding:20px; background: #fff;}
 .post .posttitle{ font-size: 24px; text-indent:10px; line-height:36px; }
 .post .posttitle a{color: #111; font-family:Microsoft Yahei;}
 .post .postmeta{color: #999999;font-size: 10px; text-indent:10px;margin: 0 0px 10px;padding: 0; text-transform: uppercase; }
+.postlist .post img{ max-width: 680px;}
         
 .read-more{ text-align: right; padding: 5px;}
 .read-more a{color: #D71A21;}

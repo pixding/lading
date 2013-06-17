@@ -10,37 +10,32 @@
 	<%- include module/nav.ejs -%>
     <div class="sitecon  fn-clear">
         <div class="grid">
-            <div class="postlist" style="width:1000px;">
-                <article class="post">
-                    <h2 class="posttitle"><%= post.title%></h2>
-                    <div class="postmeta">
-                        <span class="author">Posted by Lading  </span> - <span class="clock">  <%= post.createDate%></span>
-                    </div>
-                    <div class="entry">
-                        <%- post.content%>
-                    </div>
-                    <div class="singleinfo">
-                        <span class="categori">Categories: <% for(var j=0;j<post.tags.length;j++){%><a rel="category tag" title="<%= post.tags[j]%>" href="#"><%= post.tags[j]%></a> <%}%></span>
-                    </div>
-                    
-                    <!-- Duoshuo Comment BEGIN -->
-						<div class="ds-thread"></div>
-						<script type="text/javascript">
-						var duoshuoQuery = {short_name:"waleme"};
-							(function() {
-								var ds = document.createElement('script');
-								ds.type = 'text/javascript';ds.async = true;
-								ds.src = 'http://static.duoshuo.com/embed.js';
-								ds.charset = 'UTF-8';
-								(document.getElementsByTagName('head')[0] 
-								|| document.getElementsByTagName('body')[0]).appendChild(ds);
-							})();
-						</script>
-					<!-- Duoshuo Comment END -->
-                    
-                </article>
+            <div class="post">
+                <h2 class="posttitle"><%= post.title%></h2>
+                <div class="postmeta">
+                    <span class="author">Posted by Lading  </span> - <span class="clock">  <%= post.createDate%></span>
+                </div>
+                <div class="entry">
+                    <%- post.content%>
+                </div>
+                <div class="singleinfo">
+                    <span class="categori">Categories: <% for(var j=0;j<post.tags.length;j++){%><a rel="category tag" title="<%= post.tags[j]%>" href="#"><%= post.tags[j]%></a> <%}%></span>
+                </div>
                 
-                
+                <!-- Duoshuo Comment BEGIN -->
+					<div class="ds-thread"></div>
+					<script type="text/javascript">
+					var duoshuoQuery = {short_name:"waleme"};
+						(function() {
+							var ds = document.createElement('script');
+							ds.type = 'text/javascript';ds.async = true;
+							ds.src = 'http://static.duoshuo.com/embed.js';
+							ds.charset = 'UTF-8';
+							(document.getElementsByTagName('head')[0] 
+							|| document.getElementsByTagName('body')[0]).appendChild(ds);
+						})();
+					</script>
+				<!-- Duoshuo Comment END -->
                 
             </div>
         </div>
