@@ -21,6 +21,7 @@
 .post .posttitle{ font-size: 24px; text-indent:10px; line-height:36px; }
 .post .posttitle a{color: #111; font-family:Microsoft Yahei;}
 .post .postmeta{color: #999999;font-size: 10px; text-indent:10px;margin: 0 0px 10px;padding: 0; text-transform: uppercase; }
+.post .ke-pagebreak{ line-height:0px; border:0;}
 .postlist .post img{ max-width: 680px;}
         
 .read-more{ text-align: right; padding: 5px;}

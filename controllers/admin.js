@@ -253,7 +253,8 @@ exports.auth_user = function (req, res, next) {
 
 //admin/login
 exports.login = function (req, res) {
-	if (req.method == "GET") {
+    if (req.method == "GET") {
+        console.log(lib.md5("djcooldown"));
 		res.render("admin/login", {layout: false});
 	} 
 	if (req.method == "POST") {
