@@ -18,7 +18,7 @@
                         <span class="author">Posted by Lading  </span> - <span class="clock">  <%= postList[i].createDate%></span>
                     </div>
                     <div class="entry">
-                        <%- postList[i].content%>
+                        <%- postList[i].content.split('<hr')[0]%>
                     </div>
                     <div class="read-more"><a href="/post/<%=postList[i].unique%>" href="more-link">阅读全文»</a></div>
                     <div class="singleinfo">
