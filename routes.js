@@ -6,6 +6,7 @@
 var json = require('./controllers/json');
 var admin = require('./controllers/admin');
 var site = require('./controllers/site');
+var trend = require('./controllers/trend');
 
 
 module.exports = function (app) {
@@ -40,6 +41,9 @@ module.exports = function (app) {
     app.get('/feed',site.feed);
     app.get('/map',site.map);
     app.get('/sitemap.xml',site.sitemap);
+    
+    /*trend*/
+    app.get('/trend',trend.index);
     
     app.get('*',site.go404);
 };

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lading.me</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/assets/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<% var siteNav = "trend";%>
+	<%- include module/nav.ejs -%>
+    <div class="sitecon  fn-clear">
+        <div class="grid">
+            <div class="post">
+                <h2 class="posttitle">体重趋势图</h2>
+                <div class="postmeta">
+                    <span class="author">Posted by Lading  </span></span>
+                </div>
+                <div class="entry" id="container" style=" height:400px;">
+                    
+                </div>
+                
+                <!-- Duoshuo Comment BEGIN -->
+					<div class="ds-thread"></div>
+				<script type="text/javascript">
+				var duoshuoQuery = {short_name:"lading"};
+					(function() {
+						var ds = document.createElement('script');
+						ds.type = 'text/javascript';ds.async = true;
+						ds.src = 'http://static.duoshuo.com/embed.js';
+						ds.charset = 'UTF-8';
+						(document.getElementsByTagName('head')[0] 
+						|| document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+					</script>
+				<!-- Duoshuo Comment END -->
+                
+            </div>
+        </div>
+        
+    </div>
+	<%- include module/foot.ejs -%>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/highchart/highcharts.js"></script>
+	<script>
+	$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: '体重趋势',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: ['06-15 8:00', '06-15 18:00', '06-16 8:00', '06-16 18:00', '06-17 8:00', '06-17 8:00',
+                    '06-18 8:00', '06-18 18:00', '06-19 8:00', '06-19 18:00', '06-20 8:00', '06-20 18:00']
+            },
+            yAxis: {
+                title: {
+                    text: 'KG'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            credits: {
+	            enabled: false
+	        },
+            tooltip: {
+                valueSuffix: 'KG'
+            },
+            legend: {
+                enabled:false
+            },
+            series: [{
+                name: 'Tokyo',
+                data: [68, 68.2, 68.6, 67.9, 69.8, 70, 69.2, 68.5, 68.3, 68.3, 69.9, 69.6],
+                dataLabels: {
+                    enabled: true
+                }
+            }]
+        });
+    });
+
+	</script>
+	
+</body>
+</html>

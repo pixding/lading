@@ -161,6 +161,7 @@ exports.feed = function (req, res) {
   });
 };
 
+//文章归档
 exports.map = function(req,res,next){
 	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
 		if(err){
@@ -169,6 +170,8 @@ exports.map = function(req,res,next){
 		res.render("theme/"+config.theme+"/map",{layout:false,postList:result});
 	});
 }
+
+//sitemap.xml
 exports.sitemap = function(req,res,next){
 	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
 		if(err){
@@ -179,7 +182,7 @@ exports.sitemap = function(req,res,next){
 	});
 }
 
-
+//404
 exports.go404 = function(req,res){
 	
 	res.render("theme/"+config.theme+"/404",{layout:false});
