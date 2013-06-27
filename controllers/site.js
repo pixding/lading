@@ -24,7 +24,7 @@ exports.index = function(req,res,next){
 	proxy.assign("getPostList","getTotal","getTagList","getCategoryList",render);
 	
 	//获取文章列表
-	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1} }, function (err, result) {
         if (err) {
             return next();
         }
@@ -128,7 +128,7 @@ exports.feed = function (req, res) {
     	res.statusCode = 404;
 		res.send('Please set `rss` in config.js');
 	}
-	postMod.getByQuery({enable:"1"}, {limit:20,sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {limit:20,sort: { createDate: -1} }, function (err, result) {
     	if (err) {
 			return next(err);
 		}
@@ -163,7 +163,7 @@ exports.feed = function (req, res) {
 
 //文章归档
 exports.map = function(req,res,next){
-	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1} }, function (err, result) {
 		if(err){
 			return next();
 		}
@@ -173,7 +173,7 @@ exports.map = function(req,res,next){
 
 //sitemap.xml
 exports.sitemap = function(req,res,next){
-	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1, _id: -1} }, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {sort: { createDate: -1} }, function (err, result) {
 		if(err){
 			return next();
 		}
