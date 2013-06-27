@@ -128,7 +128,7 @@ exports.feed = function (req, res) {
     	res.statusCode = 404;
 		res.send('Please set `rss` in config.js');
 	}
-	postMod.getByQuery({enable:"1"}, {limit:20}, function (err, result) {
+	postMod.getByQuery({enable:"1"}, {limit:20,sort: { createDate: -1, _id: -1} }, function (err, result) {
     	if (err) {
 			return next(err);
 		}
