@@ -43,7 +43,7 @@ module.exports = function (app) {
     app.get('/sitemap.xml',site.sitemap);
     
     /*trend*/
-    app.get('/trend',trend.index);
+    app.get('/jianfei',trend.index);
     
     app.get('*',site.go404);
 };
