@@ -1,4 +1,7 @@
-﻿
+﻿/**
+* djqq1987@gmail.com
+*/
+
 var mongoskin = require('mongoskin');
 var dateFormat = require('dateformat');
 //相关配置

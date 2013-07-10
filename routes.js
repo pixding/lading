@@ -45,5 +45,10 @@ module.exports = function (app) {
     /*trend*/
     app.get('/jianfei',trend.index);
     
+	app.get('/weixin',function(req,res,next){
+		var echostr = req.query.echostr;
+		res.send(echostr);
+	});
+	
     app.get('*',site.go404);
 };
