@@ -10,7 +10,7 @@ body{font-family:Microsoft yahei; background:url(./images/bg.jpg) repeat;}
 .sitetop .nav li{ padding:0 25px; float:left; font-size:14px;}
 .sitetop .nav li:hover,.sitetop .nav li.current{ background:#b32b2b;}
 
-.sitecon{ padding:20px 0 20px; background:#dedede; }
+.sitecon{ padding:20px 0 20px; }
 .maincon{background: #fff; padding: 20px; }
 .maincon .title{ font-size:20px;}
 .maincon .maplist{ padding:10px 40px;}
