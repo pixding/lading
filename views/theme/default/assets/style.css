@@ -1,4 +1,4 @@
-body{font-family:Microsoft yahei; background:url(./images/bg.jpg)}
+body{font-family:Microsoft yahei; background:url(./images/bg.jpg) repeat;}
 .sitetop a{ color:#fff;}
 .sitetop a:hover{ text-decoration:none; color:#fff;}
 .grid{ width:1000px; margin:0 auto;}
