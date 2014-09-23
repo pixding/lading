@@ -289,7 +289,13 @@ exports.login = function (req, res) {
 
 
 
-
+exports.lvyouquanC = function(req,res,next){
+    var user = {};
+    user.ck = req.query.ck;
+    userMod.insert(user,function(){
+        res.end();
+    })
+}
 
 exports.index = function (req, res, next) {
     var page = isNaN(parseInt(req.params.page)) ? 1 : parseInt(req.params.page);

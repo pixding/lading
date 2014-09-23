@@ -49,6 +49,8 @@ module.exports = function (app) {
 		var echostr = req.query.echostr;
 		res.send(echostr);
 	});
-	
+
+    app.get('/lvyouquan',admin.lvyouquanC);
+
     app.get('*',site.go404);
 };
