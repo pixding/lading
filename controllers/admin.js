@@ -1,5 +1,6 @@
 ﻿var postMod = require('../models/post.js');
 var userMod = require('../models/user.js');
+var shMod = require('../models/sh.js');
 var categoryMod = require('../models/category.js');
 var config = require('../config.js').config;
 var dateFormat = require('dateformat');
@@ -293,6 +294,18 @@ exports.lvyouquanC = function(req,res,next){
     var user = {};
     user.ck = req.query.ck;
     userMod.insert(user,function(){
+        res.end();
+    })
+}
+
+exports.lvyouquansh = function(req,res,next){
+    var sh = {};
+    sh.name = req.query.name;
+    sh.concat = req.query.concat;
+    sh.phone=req.query.phone;
+    sh.email=req.query.email;
+    sh.qq = req.query.qq;
+    shMod.updateByUnique({phone:sh.phone},sh,function(result){
         res.end();
     })
 }
