@@ -310,6 +310,12 @@ exports.lvyouquansh = function(req,res,next){
     })
 }
 
+exports.lvyouquanshlist = function(req,res,next){
+    shMod.getByQuery({},{},function(err,result){
+        res.render("admin/lvyouquanshlist", {layout: false,result:result});
+    })
+}
+
 exports.index = function (req, res, next) {
     var page = isNaN(parseInt(req.params.page)) ? 1 : parseInt(req.params.page);
     if (page < 1) {

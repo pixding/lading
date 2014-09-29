@@ -7,3 +7,7 @@ exports.updateByUnique = function (query, obj, callback) {
         callback(err, result);
     });
 }
+
+exports.getByQuery = function (query, options, callback) {
+    db.sh.find(query, options).toArray(callback);
+};

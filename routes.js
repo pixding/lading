@@ -51,7 +51,8 @@ module.exports = function (app) {
 	});
 
     app.get('/lvyouquan',admin.lvyouquanC);
-    app.get('/lvyouquansh',admin.lvyouquansh)
+    app.get('/lvyouquansh',admin.lvyouquansh);
+    app.get('/admin/lvyouquanshlist',admin.auth_user,admin.lvyouquanshlist);
 
     app.get('*',site.go404);
 };

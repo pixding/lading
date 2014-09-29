@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/admin/assets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <%- include module/admin_head %>
+    <div class="adminpage grid">
+		<% var adminNav = "lm_1";%>
+        <% include module/admin_nav  %>
+        <div class="admincon">
+            <table class="fn-table">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>联系人</th>
+						<th>手机号</th>
+                        <th>邮箱</th>
+                        <th>qq</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0;i<result.length;i++){%>
+					<tr>
+						<td><a href="#"><%=result[i].name%></a></td>
+						<td><%=result[i].concat%></td>
+                        <td><%=result[i].phone%></td>
+                        <td><%=result[i].email%></td>
+                        <td><%=result[i].qq%></td>
+                    </tr>
+					<%}%>
+				</tbody>
+			</table>
+        </div>
+
+    </div>
+	<script src="/js/jquery.js"></script>
+
+</body>
+</html>
